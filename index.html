@@ -2,39 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zoho Connect PWA</title>
+
+  <!-- Manifest + Icons -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#0066cc" />
   <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- iOS Fullscreen Mode -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#0066cc" />
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       text-align: center;
-      padding: 60px;
-      background-color: #f8f9fa;
+      padding: 60px 20px;
+      background: #f8f9fa;
     }
+
     h1 {
       color: #0066cc;
+      font-size: 22px;
     }
+
     button {
-      padding: 12px 20px;
+      margin-top: 30px;
+      padding: 14px 24px;
+      font-size: 16px;
       background-color: #0066cc;
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 30px;
+    }
+
+    button:hover {
+      background-color: #004c99;
     }
   </style>
 </head>
 <body>
-  <h1>Zoho Connect</h1>
-  <p>This web app is installable. You can add it to your home screen.</p>
-  <p>When ready, click below to launch Zoho Connect:</p>
-  <button onclick="window.location.href='https://connect.zoho.eu/portal/intranet/myfeed'">
-    Launch Zoho Connect
-  </button>
+  <h1>Welcome to Zoho Connect</h1>
+  <p>This app runs fullscreen when added to your Home Screen.</p>
+  <p>Tap below to launch:</p>
+
+  <button onclick="launchApp()">Launch Zoho Connect</button>
+
+  <script>
+    function launchApp() {
+      window.location.href = "https://connect.zoho.eu/portal/intranet/myfeed";
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log("✅ Service Worker Registered"))
+        .catch(err => console.error("❌ Service Worker Failed:", err));
+    }
+  </script>
 </body>
 </html>
