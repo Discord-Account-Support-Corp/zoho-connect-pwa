@@ -7,10 +7,28 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/icon-192.png" />
   <meta name="theme-color" content="#0066cc" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #f2f2f2;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
+  <h2>Redirecting to Zoho Connect...</h2>
+  <p>If you're not redirected automatically, <a href="https://connect.zoho.eu/portal/intranet/myfeed">click here</a>.</p>
+
   <script>
-    window.location.href = "https://connect.zoho.eu/portal/intranet/myfeed";
+    setTimeout(() => {
+      window.location.href = "https://connect.zoho.eu/portal/intranet/myfeed";
+    }, 1500); // 1.5 second delay before redirect
   </script>
 </body>
 </html>
